@@ -8,7 +8,7 @@ function main() {
     echo "shfmt not found, please install: $shfmt_url" >&2
     exit 1
   fi
-  scripts=$(git ls-files --cached --modified --other --exclude-standard --deduplicate --recurse-submodules -- '*.sh' '*.bash')
+  scripts=$(git ls-files --exclude-standard --deduplicate --recurse-submodules -- '*.sh' '*.bash')
 
   if [ -n "$scripts" ]; then
     printf '%s\n' "$scripts" | parallel --replace --jobs "$(nproc)" shfmt --list "{}" || exit 1
