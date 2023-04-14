@@ -3,7 +3,7 @@ set -e
 
 function main() {
 
-  css_files=$(git ls-files --cached --modified --other --exclude-standard --deduplicate -- '*.css')
+  css_files=$(git ls-files --cached --modified --other --exclude-standard --deduplicate --recurse-submodules -- '*.css')
 
   if [ -n "$css_files" ]; then
     printf '%s\n' "$css_files" | parallel --replace --jobs "$(nproc)" yarn stylelint "{}" || exit 1
