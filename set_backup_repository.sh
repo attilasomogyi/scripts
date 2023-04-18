@@ -30,7 +30,7 @@ function main() {
         ;;
     esac
   done
-  repository_name=$(basename $(git rev-parse --show-toplevel))
+  repository_name="$(basename "$(git rev-parse --show-toplevel)")"
   github_repository_url="git@github.com:${username}/${repository_name}.git"
   gitlab_repository_url="git@gitlab.com:${username}/${repository_name}.git"
   bitbucket_repository_url="git@bitbucket.org:${username}/${repository_name}.git"
