@@ -8,7 +8,7 @@ function main() {
     echo "shellcheck not found, please install: $shellcheck_url" >&2
     exit 1
   fi
-  scripts=$(git ls-files --exclude-standard --deduplicate --recurse-submodules -- '*.sh' '*.bash')
+  scripts=$(git ls-files --exclude-standard --deduplicate -- '*.sh' '*.bash')
 
   if [ -n "$scripts" ]; then
     printf '%s\n' "$scripts" | parallel --replace --jobs "$(nproc)" shellcheck "{}" || exit 1

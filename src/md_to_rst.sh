@@ -7,7 +7,7 @@ function md_to_rts() {
 }
 
 function main() {
-  markdown_files=$(git ls-files --recurse-submodules -- '*.md' ':!:.github/*')
+  markdown_files=$(git ls-files -- '*.md' ':!:.github/*')
   export docs_source_pages="docs/source/pages"
   export -f md_to_rts
   if [ -n "$markdown_files" ]; then
